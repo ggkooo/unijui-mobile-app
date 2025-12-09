@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import * as Calendar from 'expo-calendar';
 import { MaterialIcons } from '@expo/vector-icons';
 
-const WeeklyCalendar = () => {
+const WeeklyCalendar = ({ navigation }) => {
   const [lastUpdate, setLastUpdate] = useState(new Date());
   const [timeAgo, setTimeAgo] = useState('agora');
   const [calendarEvents, setCalendarEvents] = useState([]);
@@ -75,8 +75,11 @@ const WeeklyCalendar = () => {
   };
 
   const handleInfo = () => {
-    console.log('Abrindo calendário completo...');
-    // Futura implementação: abrir calendário completo
+    if (navigation && typeof navigation.navigate === 'function') {
+      navigation.navigate('Calendar');
+    } else {
+      console.log('Navigation não disponível');
+    }
   };
 
   const fetchCalendarEvents = async () => {
