@@ -48,9 +48,10 @@ const ImageSlider = () => {
     <View style={styles.container}>
       <ScrollView
         ref={scrollViewRef}
-        horizontal
-        pagingEnabled
+        horizontal={true}
+        pagingEnabled={true}
         showsHorizontalScrollIndicator={false}
+        scrollEventThrottle={16}
         onMomentumScrollEnd={handleScroll}
         style={styles.scrollView}
       >
