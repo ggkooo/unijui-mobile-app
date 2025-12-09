@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "unijui-mobile-app",
+    "name": "UNIJUÍ Mobile",
     "slug": "unijui-mobile-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -13,17 +13,32 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCalendarsUsageDescription": "Este aplicativo precisa acessar seu calendário para mostrar disciplinas da UNIJUÍ."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "READ_CALENDAR",
+        "WRITE_CALENDAR"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-calendar",
+        {
+          "calendarPermission": "O aplicativo precisa acessar seu calendário para mostrar disciplinas da UNIJUÍ."
+        }
+      ]
+    ]
   }
 }
