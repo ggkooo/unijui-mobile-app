@@ -1,10 +1,16 @@
-import React from 'react';
-import { View, StyleSheet, Alert } from 'react-native';
-import { Header, ImageSlider, WeeklyCalendar } from '../components';
+import React, { useState } from 'react';
+import { View, StyleSheet } from 'react-native';
+import { Header, ImageSlider, WeeklyCalendar, Sidebar } from '../components';
 
 const HomeScreen = ({ navigation }) => {
+  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+
   const handleMenuPress = () => {
-    Alert.alert('Menu', 'Menu hambúrguer pressionado!');
+    setIsSidebarVisible(true);
+  };
+
+  const closeSidebar = () => {
+    setIsSidebarVisible(false);
   };
 
   return (
@@ -20,6 +26,12 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.content}>
         <WeeklyCalendar navigation={navigation} />
       </View>
+
+      <Sidebar
+        isVisible={isSidebarVisible}
+        onClose={closeSidebar}
+        navigation={navigation}
+      />
     </View>
   );
 };
