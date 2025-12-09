@@ -2,17 +2,23 @@ import React from 'react';
 import { View, StyleSheet, Alert } from 'react-native';
 import { Header, ImageSlider, WeeklyCalendar } from '../components';
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   const handleMenuPress = () => {
     Alert.alert('Menu', 'Menu hambúrguer pressionado!');
   };
 
   return (
     <View style={styles.container}>
-      <Header title="Início" onMenuPress={handleMenuPress} />
+      <Header
+        title="Início"
+        leftIcon="menu"
+        onLeftPress={handleMenuPress}
+        showLeftIcon={true}
+        showRightIcon={false}
+      />
       <ImageSlider />
       <View style={styles.content}>
-        <WeeklyCalendar />
+        <WeeklyCalendar navigation={navigation} />
       </View>
     </View>
   );
