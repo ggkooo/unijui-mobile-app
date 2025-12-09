@@ -2,25 +2,53 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { MaterialIcons } from '@expo/vector-icons';
 
-const Header = ({ title = "Início", onMenuPress }) => {
+const Header = ({
+  title = "Início",
+  leftIcon = "menu",
+  rightIcon = null,
+  onLeftPress = () => {},
+  onRightPress = () => {},
+  showLeftIcon = true,
+  showRightIcon = false
+}) => {
   return (
     <>
-      <StatusBar style="light" backgroundColor="#01458E" />
+      <StatusBar style="light" backgroundColor="#01458E" translucent={false} />
       <SafeAreaView style={styles.safeArea} edges={['top']}>
         <View style={styles.header}>
-          <TouchableOpacity
-            style={styles.menuButton}
-            onPress={onMenuPress}
-          >
-            <View style={styles.hamburgerLine} />
-            <View style={styles.hamburgerLine} />
-            <View style={styles.hamburgerLine} />
-          </TouchableOpacity>
+          {showLeftIcon ? (
+            <TouchableOpacity
+              style={leftIcon === "menu" ? styles.menuButton : styles.iconButton}
+              onPress={onLeftPress}
+            >
+              {leftIcon === "menu" ? (
+                <>
+                  <View style={styles.hamburgerLine} />
+                  <View style={styles.hamburgerLine} />
+                  <View style={styles.hamburgerLine} />
+                </>
+              ) : (
+                <MaterialIcons name={leftIcon} size={24} color="#FFFFFF" />
+              )}
+            </TouchableOpacity>
+          ) : (
+            <View style={styles.placeholder} />
+          )}
 
           <Text style={styles.title}>{title}</Text>
 
-          <View style={styles.placeholder} />
+          {showRightIcon && rightIcon ? (
+            <TouchableOpacity
+              style={styles.iconButton}
+              onPress={onRightPress}
+            >
+              <MaterialIcons name={rightIcon} size={24} color="#FFFFFF" />
+            </TouchableOpacity>
+          ) : (
+            <View style={styles.placeholder} />
+          )}
         </View>
       </SafeAreaView>
     </>
@@ -54,6 +82,13 @@ const styles = StyleSheet.create({
     height: 30,
     justifyContent: 'center',
     alignItems: 'flex-start',
+  },
+
+  iconButton: {
+    width: 30,
+    height: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   hamburgerLine: {
