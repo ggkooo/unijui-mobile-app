@@ -2,7 +2,7 @@ import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { HomeScreen, CalendarScreen, SettingsScreen } from './src/screens';
+import { HomeScreen, CalendarScreen, SettingsScreen, AcademicScreen, CourseProgressScreen } from './src/screens';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +19,8 @@ export default function App() {
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Calendar" component={CalendarScreen} />
           <Stack.Screen name="Settings" component={SettingsScreen} />
+          <Stack.Screen name="Academic" component={AcademicScreen} />
+          <Stack.Screen name="CourseProgress" component={CourseProgressScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
