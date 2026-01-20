@@ -60,7 +60,7 @@ const Sidebar = ({ isVisible, onClose, navigation }) => {
       id: 2,
       title: 'Acadêmico',
       icon: 'school-outline',
-      screen: null, // Ainda não implementado
+      screen: 'Academic',
     },
     {
       id: 3,
@@ -144,7 +144,7 @@ const Sidebar = ({ isVisible, onClose, navigation }) => {
             {menuItems.map((item, index) => (
               <TouchableOpacity
                 key={item.id}
-                 style={styles.menuItem}
+                style={styles.menuItem}
                 onPress={() => handleMenuItemPress(item)}
                 activeOpacity={0.6}
               >
