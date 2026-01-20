@@ -78,7 +78,7 @@ const Sidebar = ({ isVisible, onClose, navigation }) => {
       id: 5,
       title: 'Configurações',
       icon: 'settings-outline',
-      screen: null, // Ainda não implementado
+      screen: 'Settings',
     },
   ];
 
@@ -144,7 +144,7 @@ const Sidebar = ({ isVisible, onClose, navigation }) => {
             {menuItems.map((item, index) => (
               <TouchableOpacity
                 key={item.id}
-                style={styles.menuItem}
+                 style={styles.menuItem}
                 onPress={() => handleMenuItemPress(item)}
                 activeOpacity={0.6}
               >
