@@ -38,7 +38,8 @@
         {
           "calendarPermission": "O aplicativo precisa acessar seu calendário para mostrar disciplinas da UNIJUÍ."
         }
-      ]
+      ],
+      "expo-font"
     ]
   }
 }
